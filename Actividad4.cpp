@@ -19,6 +19,8 @@ Matriz* actividad4() {
     std::cout << "\nActividad 4\n";
     const int filas = 3;
     const int cols  = 4;
+    std::cout << "Stack(filas): " << &filas << ".\n";
+    std::cout << "Stack(columnas): " << &cols << ".\n";
     Matriz* mat = new Matriz(filas, cols);
     std::cout << "Matriz " << filas << "x" << cols << ".\n";
     for (int i = 0; i < filas; ++i) {
@@ -32,9 +34,7 @@ Matriz* actividad4() {
 void memoriaActividad4(Matriz* mat) {
     std::cout << "Heap (objeto Matriz): " << mat << ".\n";
     std::cout << "Heap (buffer data): " << mat->data << ".\n";
-    std::cout << "Code (dirección de actividad4): " << reinterpret_cast<void*>(&actividad4) << ".\n";
 }
-
 int main(){
     Matriz* matriz = actividad4();
     memoriaActividad4(matriz);
