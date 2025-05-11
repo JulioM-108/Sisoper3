@@ -1,22 +1,35 @@
-  GNU nano 7.2                                                           Actividad2.cpp                                                                     #include <iostream>
+#include <iostream>
 
-int main(){
-  int variable = 10;
-  std::cout << "Valor de variable sin modificar: " << variable << std::endl;
-  std::cout << "Valor de la dirección de la variable: " << &variable << std::endl;
-  int *mvariable = &variable;
-  *mvariable = 1000;
+void actividad2() {
+    int variable = 10;
+    int* mvariable = &variable;
+    std::cout << "Valor inicial: " << variable << ", dirección &variable = " << &variable << "\n";
 
-  std::cout << "Valor de variable modificada con puntero: " << variable << std::endl;
-  std::cout << "Dirección almacenada en puntero (mvariable): " << mvariable << std::endl;
-  std::cout << "Valor del puntero de la variable: " << &mvariable << std::endl;
+    *mvariable = 20;
+    std::cout << "Valor de mvariable: " << variable << ", con puntero  = " << mvariable << "\n";
 
-
-  int &referencia = variable;
+    int& refVar = variable;
+    refVar = 30;
+    std::cout << "Valor de refVar: " << variable << ", dirección &refVar = " << &refVar << "\n";
 
 
-  referencia = 60;
-  std::cout << "Valor variable referenciada: " << variable << std::endl;
-  std::cout << "Valor de la direccion de la variable referenciada: " << &referencia << std::endl;
-  return 0;
+    std::cout << "Dirección del puntero mvariable: " << &mvariable << "\n";
+    std::cout << "Dirección que almacena mvariable (&variable): " << mvariable << "\n";
+    std::cout << "Dirección de la referencia refVar (&variable): " << &refVar << "\n";
+}
+
+void memoriaActividad2() {
+
+    double stackEjemplo = 0.0;
+    std::cout << "Stack (variable local): &stackEjemplo = " << &stackEjemplo << "\n";
+
+    std::cout << "Heap: no se realizó new en esta actividad\n";
+
+    std::cout << "Code (dirección de función actividad2): " << reinterpret_cast<void*>(&actividad2) << "\n";
+}
+
+int main() {
+    actividad2();
+    memoriaActividad2();
+    return 0;
 }
